@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>All Services</title>
+  <link rel="stylesheet" type="text/css" href="/services/style.css">
+</head>
+<body>
+
+<!-- Side Navbar -->
+<div class="sidenav">
+  <header>Salon</header>
+  <a href="/">Home</a>
+  <a href="/allservices">All Services</a>
+  <a href="/hairservices">Hair</a>
+  <a href="/skinservices">Skin</a>
+  <a href="/bodyservices">Body</a>
+  <a href="#view-booking">View Booking Details</a>
+  <a href="/cartlist">Services Cart</a>
+</div>
+
+<!-- Display All Services heading -->
+<div class="main-content">
+  <h1>All Services</h1>
+</div>
+
+<!-- Display services and select options -->
+<div class="main-content">
+  <form id="serviceSelectionForm" action="/allservices/cartlist" method="post">
+    <div class="service-list">
+      <% services.forEach(service => { %>
+        <div class="service-card">
+          <h2> <%= service.name %></h2>
+          <p>Type: <%= service.type %></p>
+          <p>Description: <%= service.descript %></p>
+          <p>Price: $<%= service.price %></p>
+          <input type="hidden" name="serviceId" value="<%= service._id %>">
+          <input type="submit" value="Add to Cart" class="add-to-cart-button" onclick="">
+        </div>
+      <% }); %>
+    </div>
+  </form>
+</div>
+
+
+</body>
+</html>
+
+
+

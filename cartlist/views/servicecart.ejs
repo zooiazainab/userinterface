@@ -1,0 +1,53 @@
+<!-- cartlist.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Service Cart</title>
+  <!-- Include your CSS stylesheets or styling here -->
+</head>
+<body>
+
+  <h1>Service Cart</h1>
+
+  <div>
+    <h2>Selected Services</h2>
+    <ul>
+      <% selectedServices.forEach(service => { %>
+        <li>
+          <strong><%= service.name %></strong>
+          <p>Type: <%= service.type %></p>
+          <p>Description: <%= service.descript %></p>
+          <p>Price: $<%= service.price %></p>
+          <a href="/services/removefromcart/<%= service._id %>">Remove</a>
+        </li>
+      <% }); %>
+    </ul>
+  </div>
+
+  <div>
+    <h2>Total Price</h2>
+    <p>$<%= calculateTotalPrice(selectedServices) %></p>
+  </div>
+
+  <div>
+    <h2>User Details</h2>
+    <form action="/services/confirmbooking" method="post">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="phoneNumber">Phone Number:</label>
+      <input type="tel" id="phoneNumber" name="phoneNumber" required>
+
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment"></textarea>
+
+      <input type="submit" value="Confirm Booking">
+    </form>
+  </div>
+
+</body>
+</html>
+

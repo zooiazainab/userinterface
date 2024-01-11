@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>All Services</title>
+  <link rel="stylesheet" type="text/css" href="/services/style.css">
+</head>
+<body>
+
+<!-- Side Navbar -->
+<div class="sidenav">
+  <header>Salon</header>
+  <a href="/">Home</a>
+  <a href="/allservices">All Services</a>
+  <a href="/hairservices">Hair</a>
+  <a href="/skinservices">Skin</a>
+  <a href="/bodyservices">Body</a>
+  <a href="#view-booking">View Booking Details</a>
+  <a href="#services-cart">Services Cart</a>
+</div>
+
+<!-- Display All Services heading -->
+<div class="main-content">
+  <h1>Skin Services</h1>
+</div>
+
+<!-- Display services and select options -->
+<div class="main-content">
+  <form id="serviceSelectionForm" action="/servicecart" method="post">
+    <div class="service-list">
+      <% services.forEach(service => { %>
+        <div class="service-card">
+          <h2> <%= service.name %></h2>
+          <p>Type: <%= service.type %></p>
+          <p>Description: <%= service.descript %></p>
+          <p>Price: $<%= service.price %></p>
+          <button type="button" class="add-to-cart-button" data-service-id="<%= service._id %>">
+            Add to Cart
+          </button>
+        </div>
+      <% }); %>
+    </div>
+  </form>
+</div>
+
+</body>
+</html>
